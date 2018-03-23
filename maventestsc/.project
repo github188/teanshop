@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>maventestsc</name>
+	<name>myshop</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -58,7 +58,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1520404103727</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>

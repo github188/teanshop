@@ -29,7 +29,6 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
@@ -62,7 +61,6 @@
 	<filter-name>CharacterFilter</filter-name>
 	<url-pattern>*.do</url-pattern>
 	</filter-mapping>
-=======
   <servlet>
     <description></description>
     <display-name>OrderInfroServlet</display-name>
@@ -73,5 +71,4 @@
     <servlet-name>OrderInfroServlet</servlet-name>
     <url-pattern>/OrderInfroServlet</url-pattern>
   </servlet-mapping>
->>>>>>> branch 'master' of https://github.com/yangyi147/myshop.git
 </web-app>
