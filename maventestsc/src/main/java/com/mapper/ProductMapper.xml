@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper  namespace="com.mapper.ProductDao">
+         <resultMap type="Product" id="ProductMap">
+         <result   property="pid"   column="pid"  />
+         <result   property="pname"   column="pname"  />
+         <result   property="pprize"   column="pprize"  />
+         <result   property="pdes"   column="pdes"  />
+         <result   property="pscre"   column="pscre"  />
+         <association property="ptid"  column="ptid"   select="com.mapper.PtypeDao.getById"/>
+         <association   property="pimg"   column="pimg"    select="com.mapper.PimgDao.getById" />
+         <association property="pbid"  column="pbid"   select="com.mapper.PbraDao.getById"/>
+         </resultMap>
+   <select id="findAll"  resultMap="ProductMap"  parameterType="java.util.Map">
+     select  *  from  myshop_product 
+       <where>
+         <if test="qname!=null">
+             and pname like '%${qname}%'
+         </if>
+         <if test="tid>0">
+             and ptid=#{tid}
+         </if>
+         <if test="pcid>0">
+             and pimg=#{pimg}
+         </if>
+         <if test="pbid>0">
+          and pbid=#{pbid}
+         </if>
+     </where>
+ </select>
+  <select id="selid"  resultMap="ProductMap" parameterType="int">
+     select  *  from  myshop_product  where pid=#{pid}
+  </select>
+     <delete id="delPro" parameterType="int" >
+   delete from myshop_product where pid=#{pid}
+   </delete>
+</mapper>

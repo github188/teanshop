@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">    
+<configuration>  
+<typeAliases  >
+<typeAlias type="com.model.Product"  alias="Product"/>
+<typeAlias type="com.model.Ptype"  alias="Ptype"/>
+<typeAlias type="com.model.Pimg"  alias="Pimg"/>
+<typeAlias type="com.model.Pbra"  alias="Pbra"/>
+<typeAlias type="com.model.OrderInformation"  alias="OrderInformation"/>
+<typeAlias type="com.model.OrderPictureRefund"  alias="OrderPictureRefund"/>
+</typeAliases>
+<environments default="develop">
+<environment id="develop">
+<transactionManager type="JDBC"></transactionManager>
+    <dataSource type="POOLED">
+<property name="driver" value="com.mysql.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://localhost:3306/shop"/>
+<property name="username" value="root"/>
+<property name="password" value="root"/>
+</dataSource>
+</environment>
+</environments>
+<mappers>
+<mapper  resource="com/mapper/TtypeMapper.xml"/>
+<mapper  resource="com/mapper/UserMapper.xml"/>
+<mapper resource="com/mapper/OrderInformationMapper.xml" />
+<mapper resource="com/mapper/OrderRefundMapper.xml" />
+<mapper  resource="com/mapper/PtypeMapper.xml"/>
+<mapper  resource="com/mapper/PbraMapper.xml"/>
+<mapper  resource="com/mapper/PimgMapper.xml"/>
+</mappers>
+</configuration>  
