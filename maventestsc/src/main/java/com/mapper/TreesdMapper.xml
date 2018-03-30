@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  <mapper namespace="com.mapper.TreesdDao">
+  <resultMap type="Treesd" id="TreesdMap">
+  <result  property="id"  column="id"/>
+  <result  property="name"  column="name"/>
+  <result  property="turl"  column="turl"/>
+ <result  property="pid"  column="pid"/>
+ <association property="did"   column="id" select="com.mapper.TreesdDao.getByPid"></association>
+<!--  <association property="list" column="pid" select="com.mapper.TreesdDao.getById" ></association> -->
+  </resultMap>
+   <select id="listAll"   resultMap="TreesdMap" parameterType="int" >
+    select * from  treesd where pid=0
+   </select>
+   <select id="getById"   resultType="Treesd" >
+    select id,name,pid from  treesd  
+   </select>
+    <select id="getByPid"   resultType="Treesd"  parameterType="int" >
+    select * from  treesd where  pid=#{id}
+   </select>
+   </mapper>

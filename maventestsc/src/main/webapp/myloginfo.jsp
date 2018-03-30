@@ -21,12 +21,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/personal.css" media="all">
 	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<script type="text/javascript">
-function queryInfo(){
-	  document.forms[0].action="ProductServlet?list=findAll";
-	  document.forms[0].submit();
-}
-</script>
 <body>
 <section class="layui-larry-box ">
 	<div class="larry-personal">
@@ -47,7 +41,7 @@ function queryInfo(){
         <option value="下架">下架</option>
       </select>
     </div>
-		    <a class="layui-btn search_btn" onclick="queryInfo()">查询</a>
+		   <a class="layui-btn search_btn" href="/product/index">查询</a>
 		</div><div class="layui-inline">
 			<a class="layui-btn layui-btn-normal newsAdd_btn" href="personInfo.html">添加商品</a>
 		</div>
@@ -92,8 +86,7 @@ function queryInfo(){
        <th   ><a href="ProductServlet?list=upPro&pid=${p.pid}">修改</a></th> 
        </tr> 
 </c:forEach>
-                          </thead>
-                             
+               </thead>
                      </table>
                      </form>
                      <div class="larry-table-page clearfix">
@@ -178,10 +171,6 @@ function queryInfo(){
 				});
     });
 </script>
-<!--    <script type="text/javascript"> -->
-//       var tid = document.getElementById("tid");
-//       tid.value='${tid}';
-<!--      </script> -->
 </body>
 
 </html>
