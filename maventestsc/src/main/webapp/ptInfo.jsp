@@ -1,19 +1,17 @@
-<%@page import="com.bean.Ptype"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 	<title>个人信息</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="renderer" content="webkit">	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">	
-	<meta name="apple-mobile-web-app-capable" content="yes">	
+	<meta name="apple-mobile-web-app-capable" >	
 	<meta name="format-detection" content="telephone=no">	
 	<link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all">
 	<link rel="stylesheet" type="text/css" href="/common/bootstrap/css/bootstrap.css" media="all">
@@ -22,22 +20,32 @@
 	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
-function fun(a) {   
-    layer.open({  
-            title: ['温馨提示'],  
-            content: '<div style="color:#767676">确定删除吗</div>',  
-            btn: ['确定', '取消'],  
-            shadeClose: true,  
-            //回调函数  
-            yes: function(index, layero){  
-            	window.location.href='/product/delPro/'+a;  
-            },  
-            btn2: function(index, layero){  
-            },  
-            cancel: function(index,layero){  
-            },  
-    });   
-} 
+        function fun(a) {   
+            layer.open({  
+                    title: ['温馨提示'],  
+                    content: '<div style="color:#767676">确定删除吗</div>',  
+                    btn: ['确定', '取消'],  
+                    shadeClose: true,  
+                    //回调函数  
+                    yes: function(index, layero){  
+                    	$.post("/pt/delpt", {
+            			tid:a
+            		},function(data){
+            			if(data==1){
+            				alert("该类型正在被使用不能被删除")
+            			}else{
+            				window.location.href="/pt/listPt";
+            			}
+            			},"json");
+                    },  
+                    btn2: function(index, layero){  
+                    },  
+                    cancel: function(index,layero){  
+                       
+                    },  
+              
+            });   
+    } 
 </script>
 <body>
 <section class="layui-larry-box ">
@@ -49,22 +57,9 @@ function fun(a) {
 			 <div class="layui-input-inline">
 		    	<input value="${qname}" name="qname" id="qname" placeholder="请输入关类型" class="layui-input search_input" type="text">
 		    </div>
-		    <div class="layui-input-inline">
-		    	<input value="${qtype}" name="qtype" id="qtype" placeholder="请输入关键字" class="layui-input search_input" type="text">
-		    </div>
-		      <div class="layui-inline">
-      <select name="pscre"  class="layui-select">
-        <option value="">请选状态</option>
-        <option value="上架">上架</option>
-        <option value="下架">下架</option>
-      </select>
-    </div>
 		   <a class="layui-btn search_btn" onclick="findAll()">查询</a>
 		</div><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="/pbrandtype/listpt">添加商品</a>
-		</div>
-		<div class="layui-inline">
-			<a class="layui-btn layui-btn-danger newsAdd_btn">批量删除</a>
+			<a class="layui-btn layui-btn-normal newsAdd_btn" href="/inptInfo.jsp">添加商品</a>
 		</div>
   </div>
 	</blockquote>
@@ -74,35 +69,19 @@ function fun(a) {
                      <table class="layui-table table-hover" lay-even="" lay-skin="nob"  id="tab">
                           <thead>
                               <tr>
-                                  <th><input type="checkbox" id="selected-all"></th>
                                   <th>ID</th>
-                                  <th>图片</th>
-                                  <th>名字</th>
-                                  <th>价格</th>
-                                  <th>数量</th>
-                                  <th>种类</th>
-                                  <th>状态</th>
-                                  <th>款式</th>
-                                  <th>描述</th>
+                                  <th>类型</th>
                                   <th>删除</th>
                                   <th>修改</th>
                               </tr>
-       <c:forEach  items="${list}"  var="p"  varStatus="stea"> 
           <tr>
-           <td><input type="checkbox"></td> 
-       <th  >${stea.index+1}</th>
-        <th  ><img src="/images/${p.pimg.purl}"/>${p.pimg.purl}</th> 
-       <th   >${p.pname}</th> 
-       <th  >${p.pprize}</th> 
-       <th  >${p.pcount}</th> 
-       <th  >${p.ptid.ptname}</th> 
-       <th  >${p.pscre}</th> 
-       <th  >${p.pbid.pbraname}</th>
-       <th  >${p.pdes}</th> 
-      <th  ><button class="layui-btn layui-btn-sm" type="button" onclick="fun(${p.pid})">
+       <c:forEach items="${pt }"  var="p"  varStatus="stea">
+       <th >${stea.index+1}</th>
+       <th >${p.ptname}</th> 
+      <th ><button class="layui-btn layui-btn-sm" type="button" onclick="fun(${p.ptid})">
     <i class="layui-icon">&#xe640;</i>
   </button></th> 
-       <th   ><a href="ProductServlet?list=upPro&pid=${p.pid}" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe642;</i></a></th> 
+       <th ><a href="/pt/getById/${p.ptid}"  class="layui-btn layui-btn-normal"> <i class="layui-icon">&#xe642;</i></a></th> 
        </tr> 
 </c:forEach>
                </thead>
@@ -152,6 +131,9 @@ function fun(a) {
 </section>
 <script type="text/javascript" src="/common/layui/layui.js"></script>
 <script type="text/javascript">
+
+
+
 	layui.use(['jquery','layer','element','laypage'],function(){
 	      window.jQuery = window.$ = layui.jquery;
 	      window.layer = layui.layer;
@@ -172,7 +154,6 @@ function fun(a) {
 						}
 					}
 				});
-
           laypage({
 					cont: 'page2',
 					pages: 10 //总页数

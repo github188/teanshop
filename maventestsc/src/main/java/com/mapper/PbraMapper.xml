@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper  namespace="com.mapper.PbraDao">
+<resultMap type="Pbra" id="PbraMap">
+  <result     property="pbid"  column="pbid"/>
+<result   property="pbraname" column="pbra"/>
+<result   property="tid" column="tid"/>
+<association property="listp" column="tid"  select="com.mapper.PtypeDao.getById"></association>
+</resultMap>
       <select id="getById" parameterType="int" resultType="Pbra">
       select * from myshop_pbra where pbid=#{pbid}
       </select>
-       <select id="findAll"   resultType="Pbra">
-      select * from myshop_pbra
+       <select id="getByPtid"   resultType="Pbra" parameterType="int">
+      select * from myshop_pbra where tid=#{tid}
         </select>
+        <select id="findAll"  resultMap="PbraMap">
+      select * from myshop_pbra 
+        </select>
+        <update  id="upbra"  parameterType="Pbra"  >
+        update myshop_pbra set pbraname=#{pbraname},tid=#{tid} where pbid=#{pbid}
+        </update>
+        <insert  id="inpbra" parameterType="Pbra">
+        insert into myshop_pbra(pbraname,tid) values(#{pbraname},#{tid})
+        </insert>
+          <delete  id="delpb" parameterType="int">
+        delete from myshop_pbra where pbid=#{pbid}
+        </delete>
       </mapper>
