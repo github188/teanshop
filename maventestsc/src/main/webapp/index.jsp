@@ -27,6 +27,15 @@
 	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8" media="all"></script>
 	<script src="/common/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8" media="all"></script>
 </head>
+<script type="text/javascript">
+
+$.ajax({
+	type:"post",
+	url:"",
+	async:true
+});
+
+</script>
 <body>
 <div class="layui-layout layui-layout-admin" id="layui_layout">
 	<!-- 顶部区域 -->

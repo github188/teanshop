@@ -35,8 +35,7 @@ public class PtypeServiceImp implements PtypeService {
 	}
 	@Override
 	public void inpt(Ptype ptype) {
-		ptypeDao.uppt(ptype);
-		
+		ptypeDao.inpt(ptype);
 	}
 
 }
