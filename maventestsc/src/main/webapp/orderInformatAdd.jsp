@@ -28,36 +28,36 @@
 				<header class="larry-personal-tit">
 					<span>发货信息</span>
 					
-					<span style="margin-left:900px;"><a href="OrderInformation.jsp" class="btn btn-default">返回列表</a></span>
+					<span style="margin-left:900px;"><a href="/shipper/list" class="btn btn-default">返回列表</a></span>
 				</header>
 				<!-- /header -->
 				<div class="larry-personal-body clearfix changepwd">
-					<form class="layui-form col-lg-4" method="post" action="OrderInfroServlet?type=save">
+					<form class="layui-form col-lg-4" method="post" action="/shipper/save">
 						<div class="layui-form-item">
 							<label class="layui-form-label">发货人</label>
 							<div class="layui-input-block">
-							<input type="text" name="name" autocomplete="off" class="layui-input" value="" >
+							<input type="text" name="shipper_name" autocomplete="off" class="layui-input" value="" >
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">联系方式</label>
 							<div class="layui-input-block">
-								<input type="text" name="contact" autocomplete="off" class="layui-input" value="" >
+								<input type="text" name="shipper_contact" autocomplete="off" class="layui-input" value="" >
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">发货地址：</label>
 							<div class="layui-input-block">
-								<input type="text" name="address" autocomplete="off" class="layui-input" value="" >
+								<input type="text" name="shipper_address" autocomplete="off" class="layui-input" value="" >
 							</div>
 						</div>
 						<div class="layui-form-item">
 					<label class="layui-form-label">是否默认</label>
 					<div class="layui-input-block">
-						<input type="radio" name="def" value="1" title="是" checked="checked">
+						<input type="radio" name="shipper_default" value="1" title="是" checked="checked">
 						<div class="layui-unselect layui-form-radio layui-form-radioed">
 							<i class="layui-anim layui-icon"></i><span>是</span></div>
-						<input type="radio" name="def" value="0" title="否">
+						<input type="radio" name="shipper_default" value="0" title="否">
 						<div class="layui-unselect layui-form-radio">
 							<i class="layui-anim layui-icon"></i><span>否</span></div>
 					</div>

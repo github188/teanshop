@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShipperDao">
+	<select id="getById" resultType="Shipper" parameterType="int">
+		select * from myshop_shipper where shipper_id=#{value}
+	</select>
+	<select id="listAll" resultType="Shipper">
+		select * from myshop_shipper
+	</select>
+
+	<insert id="save" parameterType="Shipper">
+		insert into myshop_shipper
+		(shipper_id,shipper_name,shipper_contact,shipper_address,shipper_default)
+		values(#{shipper_id},#{shipper_name},#{shipper_contact},#{shipper_address},#{shipper_default})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from myshop_shipper where shipper_id=#{value}
+	</delete>
+
+	<update id="update" parameterType="Shipper">
+		update myshop_shipper
+		<set>
+			<if test="shipper_name!=null">
+				shipper_name=#{shipper_name},
+			</if>
+			<if test="shipper_contact!=null">
+				shipper_contact=#{shipper_contact},
+			</if>
+			<if test="shipper_address!=null">
+				shipper_address=#{shipper_address},
+			</if>
+			<if test="shipper_default!=null">
+				shipper_default=#{shipper_default},
+			</if>
+		</set>
+		 where shipper_id=#{shipper_id}
+		
+	</update>
+</mapper>

@@ -22,31 +22,23 @@
 	<script src="js/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/locale/bootstrap-table-zh-CN.min.js" type="text/javascript" charset="utf-8"></script>
 
-	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
-	<link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/bootstrap/css/bootstrap.css" media="all">
 
-	<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
-	<link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
-	<script src="js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/common/global.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/css/personal.css" media="all">
+	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 	</head>
 	<script type="text/javascript">
-		$(function() {
 	
-			if(${ s == null }) {
-				window.location.href = "OrderInfroServlet?type=list";
-			}
-		})
+	function add() {
+		document.forms[0].action = "/orderInformatAdd.jsp";
+		document.forms[0].submit();
+	}
 
-		function add() {
-			document.forms[0].action = "OrderInfroServlet?type=toadd";
-			document.forms[0].submit();
-		}
-		function xiugai(id){
-			window.location.href = "OrderInfroServlet?type=getIdAll&id="+id;
-		}
-	</script>
+	</script>  
 
 	<body>
 		<section class="layui-larry-box">
@@ -54,7 +46,7 @@
 				<div class="layui-tab">
 					<form action="" method="post">
 						<blockquote class="layui-elem-quote news_search">
-							<button type="button" class="btn btn-info" onclick="add()">添加发货信息</button>
+							<button type="button" class="btn btn-info" onclick="add()">添加发货信息</button> 
 						</blockquote>
 
 						<div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
@@ -82,22 +74,25 @@
 											<c:forEach items="${list}" var="p" varStatus="stea">
 												<tr>
 													<td><input type="checkbox"></td>
-													<th>${p.information_id }</th>
-													<th>${p.information_name}</th>
-													<th>${p.information_contact}</th>
-													<th>${p.delivery_address}</th>
-													<c:if test="${p.information_default==1}">
+													<th>${p.shipper_id }</th>
+													<th>${p.shipper_name}</th>
+													<th>${p.shipper_contact}</th>
+													<th>${p.shipper_address}</th>
+													<th>${p.shipper_default}</th>
+												<%-- 	<c:if test="${p.shipper_default==1}">
 													<th>是</th>
 													</c:if>
-													<c:if test="${p.information_default==0}">
+													<c:if test="${p.shipper_default==0}">
 													<th>否</th>
 													</c:if>
-												
-													<th>
-														<a href="OrderInfroServlet?type=delete&&id=${p.information_id}" class="layui-btn layui-btn-small ">删除</a>
-														<a href="#" onclick="xiugai(${p.information_id})" class="btn btn-default">修改</a>
+													
+													
+													 --%>
+												<th>
+														<a href="/shipper/delete/${p.shipper_id}" class="layui-btn layui-btn-small ">删除</a>
+														<a href="/shipper/init/${p.shipper_id}" class="btn btn-default">修改</a>
 													</th>
-
+													
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -142,7 +137,7 @@
 				</div>
 			</div>
 		</section>
-		<script type="text/javascript " src="common/layui/layui.js "></script>
+		<script type="text/javascript " src="/common/layui/layui.js "></script>
 	
 	</body>
 

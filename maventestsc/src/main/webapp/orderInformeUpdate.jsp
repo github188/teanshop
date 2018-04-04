@@ -12,10 +12,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="format-detection" content="telephone=no">
-		<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
-		<link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
-		<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
-		<link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/common/bootstrap/css/bootstrap.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/common/global.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/css/personal.css" media="all">
 		<title>修改发货信息</title>
 	</head>
 
@@ -27,28 +27,30 @@
 			<div class="larry-personal">
 				<header class="larry-personal-tit">
 						<span>修改发货信息</span>
-					<span style="margin-left:900px;"><a href="OrderInformation.jsp" class="btn btn-default">返回列表</a></span>
+					<span style="margin-left:900px;"><a href="/shipper/list" class="btn btn-default">返回列表</a></span>
 				
 				</header>
 				<!-- /header -->
 				<div class="larry-personal-body clearfix changepwd">
-					<form class="layui-form col-lg-4" method="post" action="OrderInfroServlet?type=updates&&id=${lists[0].information_id}">
+				
+					<form class="layui-form col-lg-4" method="post" action="/shipper/update">
+					<input type="hidden" name="shipper_id" value="${shipper.shipper_id}">
 						<div class="layui-form-item">
 							<label class="layui-form-label">发货人:</label>
 							<div class="layui-input-block">
-							<input type="text" name="name" class="layui-input" value="${lists[0].information_name}" >
+							<input type="text" name="shipper_name" class="layui-input" value="${shipper.shipper_name}" >
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">联系方式:</label>
 							<div class="layui-input-block">
-								<input type="text" name="contact" class="layui-input" value="${lists[0].information_contact}" >
+								<input type="text" name="shipper_contact" class="layui-input" value="${shipper.shipper_contact}" >
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">发货地址:</label>
 							<div class="layui-input-block">
-								<input type="text" name="address"  class="layui-input" value="${lists[0].delivery_address}" >
+								<input type="text" name="shipper_address"  class="layui-input" value="${shipper.shipper_address}" >
 							</div>
 						</div>
 						<div class="layui-form-item">

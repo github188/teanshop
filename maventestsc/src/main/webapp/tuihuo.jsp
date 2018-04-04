@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>退货管理</title>
-	</head>
+
 	<meta charset="UTF-8">
 	<title>个人信息</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,20 +22,50 @@
 	<script src="js/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/locale/bootstrap-table-zh-CN.min.js" type="text/javascript" charset="utf-8"></script>
 
-	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all">
 	<link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
 
-	<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
-	<link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/global.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/css/personal.css" media="all">
 	<script src="js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 	</head>
 	<script type="text/javascript">
-		function queryInfo() {
-			document.forms[0].action = "ProductServlet?list=findAll";
-			document.forms[0].submit();
-		}
+//  function yang(p){
+//  $post(
+//  	"/returns"+p.value,
+//  	function(date){	
+//  		fun(date);
+//  	})
+//  	
+//  	function fun(date){
+//		$(".t1").remove();
+//		var order_id;
+//		var picture_id;
+//		var shipper_id;
+//		var state_id;
+//		$(data).each(function(i){
+//			if (date[i].state_id==1) {
+//				state_id="待审核"
+//			} else if(date[i].state_id==2){
+//				state_id="已退回"
+//			}else if(date[i].state_id==3){
+//				state_id="已审核"
+//			}
+//			else if(date[i].state_id==4){
+//				state_id="代收货"
+//			}
+//			else if(date[i].state_id==5){
+//				state_id="已收货"
+//			}
+//			else if(date[i].state_id==6){
+//				state_id="已完成"
+//			}
+//
+//		})
+//	}
+//  }
 	</script>
 
 	<body>
@@ -43,12 +73,11 @@
 			<div class="larry-personal">
 				<div class="layui-tab">
 					<blockquote class="layui-elem-quote news_search">
-						<select class="form-control"style="width:200px;margin-left:80px;">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+						<select class="form-control"style="width:200px;margin-left:80px;" id="sid" name="sid" onchange="yang(this)">
+							<option value="7">全部</option>
+						<c:forEach items="${lists}" var="s" >
+						<option value="${s.state_id} ">${s.state_name}</option>
+						</c:forEach>
 						</select>
 					</blockquote>
 
@@ -56,9 +85,9 @@
 						<!-- 操作日志 -->
 						<div class="layui-tab-item layui-field-box layui-show">
 							<form action="" method="post">
-								<table class="layui-table table-hover" lay-even="" lay-skin="nob">
+								<table class="layui-table table-hover" lay-even="" lay-skin="nob" id="t1">
 
-									</tr>
+							
 									<thead>
 										<tr>
 											<th><input type="checkbox" id="selected-all"></th>
@@ -76,17 +105,21 @@
 									<tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${listPro}" var="p" varStatus="stea">
+											<c:forEach items="${list}" var="p" varStatus="stea">
 												<tr>
 													<td><input type="checkbox"></td>
 													<th>${stea.index+1}</th>
-													<th>${p.pname}</th>
-													<th>${p.pcount}</th>
-													<th>${p.pprize}</th>
-													<th>${p.type.tname}</th>
+													<th>${p.return_serialNumber}</th>
+													<th>11455256335</th>
+													<th>杨凡</th>
+													<th>2018.4.7</th>
+														<th>未发货，申请退款</th>
+														<th>${p.return_time}</th>
+													<th>${p.state_id.state_name}</th>
 													<th>
-														<a href="ProductServlet?list=delPro&pid=${p.pid}" ">删除</a></th>
-       <th   ><a href="ProductServlet?list=upPro&pid=${p.pid} ">修改</a></th>
+														<a href="/returns/delete/${p.return_id}" class="layui-btn" >删除</a>
+														<a href="/returns/init/${p.return_id}"class="layui-btn layui-btn-primary">修改</a></th>
+
       </tr>
       </c:forEach>
                           </tbody>
@@ -131,7 +164,7 @@
 		</div>
 	</div>
 </section>
-<script type="text/javascript " src="common/layui/layui.js "></script>
+<script type="text/javascript " src="/common/layui/layui.js "></script>
 <script type="text/javascript ">
 	layui.use(['jquery','layer','element','laypage'],function(){
 	      window.jQuery = window.$ = layui.jquery;

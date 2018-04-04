@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+ <mapper namespace="com.mapper.ReturnDao">
+ <resultMap type="Returns" id="ReturnMap">
+ <result column="return_id" property="return_id"/>
+ <result column="return_serialNumber" property="return_serialNumber"/>
+ <result column="return_time" property="return_time"/>
+ <result column="refund_why" property="refund_why"/>
+ <!-- 差会员 和定单
+  <association column="order_did" property="order_did" select=""></association>
+ <association column="member_id" property="member_id"></association>
+
+  -->
+
+ <association column="state_id" property="state_id" select="com.mapper.StateDao.getById"></association>
+ <association column="picture_id" property="picture_id" select="com.mapper.PictureDao.getById"></association>
+ <association column="shipper_id" property="shipper_id" select="com.mapper.ShipperDao.getById"></association>
+ </resultMap>
+ <select id="listAll" resultMap="ReturnMap" parameterType="Returns">
+ select * from  myshop_return
+ </select>
+<delete id="delete" parameterType="int" >
+delete from myshop_return  where return_id=#{value}
+</delete>
+
+<select id="getById" resultMap="ReturnMap" parameterType="int">
+ select * from  myshop_return where return_id=#{value}
+</select> 
+<update id="update" parameterType="Returns">
+
+</update>
+ </mapper>
