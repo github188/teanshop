@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -23,34 +22,46 @@
 	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
-function queryInfo(){
-	  document.forms[0].action="ProductServlet?list=findAll";
-	  document.forms[0].submit();
-}
+function fun(a) {   
+    layer.open({  
+            title: ['温馨提示'],  
+            content: '<div style="color:#767676">确定删除吗</div>',  
+            btn: ['确定', '取消'],  
+            shadeClose: true,  
+            //回调函数  
+            yes: function(index, layero){  
+            	window.location.href='/product/delPro/'+a;  
+            },  
+            btn2: function(index, layero){  
+            },  
+            cancel: function(index,layero){  
+            },  
+    });   
+} 
 </script>
 <body>
 <section class="layui-larry-box ">
 	<div class="larry-personal">
-<form action="" method="post">
+<form action="" method="post" >
 	    <div class="layui-tab ">
             <blockquote class="layui-elem-quote news_search">
 		<div class="layui-inline">
 			 <div class="layui-input-inline">
-		    	<input value="${ttype.name}" name="qtype" id="qtype" placeholder="请输入关类型" class="layui-input search_input" type="text">
+		    	<input value="${qname}" name="qname" id="qname" placeholder="请输入关类型" class="layui-input search_input" type="text">
 		    </div>
 		    <div class="layui-input-inline">
-		    	<input value="${qname}" name="qname" id="qname" placeholder="请输入关键字" class="layui-input search_input" type="text">
+		    	<input value="${qtype}" name="qtype" id="qtype" placeholder="请输入关键字" class="layui-input search_input" type="text">
 		    </div>
 		      <div class="layui-inline">
-      <select name="quiz2"  class="layui-select">
+      <select name="pscre"  class="layui-select">
         <option value="">请选状态</option>
         <option value="上架">上架</option>
         <option value="下架">下架</option>
       </select>
     </div>
-		    <a class="layui-btn search_btn" onclick="queryInfo()">查询</a>
+		   <a class="layui-btn search_btn" onclick="findAll()">查询</a>
 		</div><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="personInfo.html">添加商品</a>
+			<a class="layui-btn layui-btn-normal newsAdd_btn" href="/pbrandtype/listpt">添加商品</a>
 		</div>
 		<div class="layui-inline">
 			<a class="layui-btn layui-btn-danger newsAdd_btn">批量删除</a>
@@ -60,7 +71,6 @@ function queryInfo(){
 		    <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
 		         <!-- 操作日志 -->
                 <div class="layui-tab-item layui-field-box layui-show">
-                <form action="" method="post" >
                      <table class="layui-table table-hover" lay-even="" lay-skin="nob"  id="tab">
                           <thead>
                               <tr>
@@ -81,7 +91,7 @@ function queryInfo(){
           <tr>
            <td><input type="checkbox"></td> 
        <th  >${stea.index+1}</th>
-        <th  >${p.pimg.pimgid}</th> 
+        <th  ><img src="/images/${p.pimg.purl}"/>${p.pimg.purl}</th> 
        <th   >${p.pname}</th> 
        <th  >${p.pprize}</th> 
        <th  >${p.pcount}</th> 
@@ -89,14 +99,14 @@ function queryInfo(){
        <th  >${p.pscre}</th> 
        <th  >${p.pbid.pbraname}</th>
        <th  >${p.pdes}</th> 
-      <th   ><a href="ProductServlet?list=delPro&pid=${p.pid}"">删除</a></th> 
-       <th   ><a href="ProductServlet?list=upPro&pid=${p.pid}">修改</a></th> 
+      <th  ><button class="layui-btn layui-btn-sm" type="button" onclick="fun(${p.pid})">
+    <i class="layui-icon">&#xe640;</i>
+  </button></th> 
+       <th   ><a href="ProductServlet?list=upPro&pid=${p.pid}" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe642;</i></a></th> 
        </tr> 
 </c:forEach>
-                          </thead>
-                             
+               </thead>
                      </table>
-                     </form>
                      <div class="larry-table-page clearfix">
                           <a href="javascript:;" class="layui-btn layui-btn-small"><i class="iconfont icon-shanchu1"></i>删除</a>
 				          <div id="page" class="page"></div>
@@ -179,10 +189,6 @@ function queryInfo(){
 				});
     });
 </script>
-<!--    <script type="text/javascript"> -->
-//       var tid = document.getElementById("tid");
-//       tid.value='${tid}';
-<!--      </script> -->
 </body>
 
 </html>

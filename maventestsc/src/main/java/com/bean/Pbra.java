@@ -1,8 +1,14 @@
 package com.bean;
+
+import java.util.List;
+
 public class Pbra {
 private  int pbid;
 private String pbraname;
-private  int ptid;
+private  int tid;
+private   Ptype listp;
+
+
 public int getPbid() {
 	return pbid;
 }
@@ -15,15 +21,20 @@ public String getPbraname() {
 public void setPbraname(String pbraname) {
 	this.pbraname = pbraname;
 }
-public int getPtid() {
-	return ptid;
+public int getTid() {
+	return tid;
 }
-public void setPtid(int ptid) {
-	this.ptid = ptid;
+public void setTid(int tid) {
+	this.tid = tid;
+}
+public Ptype getListp() {
+	return listp;
+}
+public void setListp(Ptype listp) {
+	this.listp = listp;
 }
 @Override
 public String toString() {
-	return "Pbra [pbid=" + pbid + ", pbraname=" + pbraname + ", ptid=" + ptid + "]";
+	return "Pbra [pbid=" + pbid + ", pbraname=" + pbraname + ", tid=" + tid + ", listp=" + listp + "]";
 }
-
 }
