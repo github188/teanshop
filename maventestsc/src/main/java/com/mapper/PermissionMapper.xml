@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.mapper.PermissionDao">
+<select id="getAllper" resultType="com.bean.Permission">
+SELECT id,`name`,type,pid pId from permission
+</select>
+<!-- void updatePer(Permission per); -->
+<update id="updatePer">
+update permission <set>
+<if test="name!=null">
+name=#{name},
+</if>
+</set>
+ where id=#{id}
+</update>
+
+<!-- List<Permission>getOperationById(int id); -->
+<select id="getOperationById" resultType="com.bean.Permission">
+select * from permission p,role r,role_permission rp WHERE p.id=rp.perId and r.rid=rp.roleId  and pid=(select id from permission p WHERE p.name='权限管理') and r.rid=#{id}
+</select>
+<!-- int savePer(Permission per); -->
+<insert id="savePer" parameterType="com.bean.Permission" >
+
+INSERT INTO permission(`name`,url,pid,reveal) VALUES(#{name},#{url},#{pId},1)
+</insert>
+<!-- List<Permission> readChildnodesById(int id); -->
+<select id="readChildnodesById" resultType="com.bean.Permission">
+select * from permission where pid= #{id}
+</select>
+
+<delete id="deletePerById">
+delete from permission where id=#{id}
+</delete>
+
+ </mapper>

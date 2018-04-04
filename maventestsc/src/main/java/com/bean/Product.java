@@ -5,7 +5,6 @@ import java.util.function.ObjIntConsumer;
 
 public class Product {
 	private  int  pid;
-	
 	private  String pname;
 	private  int pprize;
 	private String pdes;

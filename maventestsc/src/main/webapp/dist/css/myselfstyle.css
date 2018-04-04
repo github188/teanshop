@@ -1,0 +1,71 @@
+html {
+				overflow: hidden;
+			}
+			
+			#head_logo {
+				height: 80px;
+			}
+			
+			#own_sel {
+				position: relative;
+				left: 635px;
+			}
+			
+			#head_sel {
+				border-radius: 256px;
+				width: 40px;
+				height: 40px;
+			}
+			
+			#own_a {
+				padding: 0px 0px;
+			}
+			
+			.tabPane_body {
+				border: solid 1px gainsboro;
+			}
+			
+			.userdata_btn {
+				margin: 0px 20px;
+			}
+			
+			#head_logo {
+				width: 200px;
+				height: 100px;
+				font-size: 40px;
+				text-align: center;
+				padding-top: 15px;
+				font-family: "arial black";
+				color: cornflowerblue;
+				cursor: pointer;
+			}
+			
+			#face_div {
+				position: relative;
+				display: inline;
+				left: 705px;
+				top: 125px;
+			}
+			
+			#log_and_reg {
+				display: none;
+				position: relative;
+				left: 1050px;
+				top: 30px;
+			}
+			
+			#face_a {
+				visibility: hidden;
+			}
+			
+			#save_userinfo_btn,
+			#reset_userinfo_btn,
+			#update_userinfo_btn {
+				visibility: hidden;
+			}
+			
+			/*#fatie{
+			    display: none; 
+			}*/
+			
+            

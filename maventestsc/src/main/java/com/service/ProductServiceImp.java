@@ -34,19 +34,13 @@ public class ProductServiceImp implements ProductService {
 		
 		return productdao.findCount(map);
 	}
-
 	@Override
 	public void delPro(int pid) {
 		productdao.delPro(pid);
 		
 	}
-
 	@Override
 	public void upPro(Map map) {
 		productdao.upPro(map);
 	}
-
-	
-	
-	
 }

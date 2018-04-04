@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.mapper.Role_PerDao">
+<!-- com.mapper.Role_PerDao.getAllRole_PerById(int) -->
+<select id="getAllRole_PerById" resultType="com.bean.Role_Permission">
+select * from role_permission where roleId=#{id}
+</select>
+<!-- void save(@Param("id")int id,@Param("ids")int[]ids); -->
+<insert id="save" parameterType="java.util.Map" >
+
+INSERT INTO role_permission VALUES(#{id},#{pid})
+
+</insert>
+
+<delete id="deleteRolr_Per" >
+DELETE FROM role_permission WHERE roleId=#{id}
+</delete>
+</mapper>

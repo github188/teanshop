@@ -22,8 +22,8 @@
 			</if>
 			<if test="qtype!=null">
 				and ptid in( select ptid from myshop_ptype where ptname
-				link
-				%${qtype}%')
+				like
+				'%${qtype}%')
 			</if>
 			<if test="pcid>0">
 				and pimg=#{pimg}
@@ -31,17 +31,19 @@
 			<if test="pbid>0">
 				and pbid=#{pbid}
 			</if>
-			<if test="pscre!=null">
-				and pbid=#{pscre}
+			<if test="ptid>0">
+				and ptid=#{ptid}
+			</if>
+			<if test="pscre!=null&amp;pscre!=''">
+				and pscre=#{pscre}
 			</if>
 			</where>
-	</select>
-	<select id="selid" resultMap="ProductMap" parameterType="int">
-		select *
-		from myshop_product where pid=#{pid}
 	</select>
 	<delete id="delPro" parameterType="int">
 		delete from myshop_product
 		where pid=#{pid}
 	</delete>
+	 <insert id="save"  parameterType="Product">
+      insert into myshop_product(pimg,pname,pprize,pcount,ptid,pbid,pdes,pscre) values(#{pimg.pimgid},#{pname},#{pprize},#{pcount},#{ptid.ptid},#{pbid.pbid},#{ pdes},#{pscre})
+    </insert>
 </mapper>

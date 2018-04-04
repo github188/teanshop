@@ -4,7 +4,17 @@
   <select id="getById"  resultType="Pimg" parameterType="int">
      select  *  from  myshop_pimg  where pid=#{pid}
   </select>
-     <delete id="delPro" parameterType="int" >
-   delete from myshop_product where pid=#{pid}
+  <select id="getByPbid"  resultType="Pimg" parameterType="int">
+     select  *  from  myshop_pimg  where pimgid=#{pimgid}
+  </select>
+     <delete id="delPi" parameterType="int" >
+   delete from myshop_pimg where pimgid=#{pimgid}
    </delete>
+   
+   <insert id="inpi" parameterType="Pimg" >
+     <selectKey resultType="int" order="AFTER" keyProperty="pimgid">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+   insert into myshop_pimg(purl) values(#{purl})
+   </insert>
 </mapper>

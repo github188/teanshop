@@ -7,4 +7,13 @@
        <select id="findAll" resultType="Ptype">
       select * from myshop_ptype
       </select>
+       <update  id="uppt"  parameterType="Ptype"  >
+        update myshop_ptype set ptname=#{ptname} where ptid=#{ptid}
+        </update>
+        <insert  id="inpt" parameterType="Ptype">
+        insert into myshop_ptype(ptname) values(#{ptname})
+        </insert>
+         <delete  id="delpt" parameterType="int">
+        delete from myshop_ptype where ptid=#{ptid}
+        </delete>
       </mapper>
