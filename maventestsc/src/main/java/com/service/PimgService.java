@@ -12,5 +12,5 @@ public interface PimgService {
 //	public  void delId(int tid);
 //	public  void upId(Ttype ttype);
 	public  void inpi(Pimg pimg);
-
+   
 }

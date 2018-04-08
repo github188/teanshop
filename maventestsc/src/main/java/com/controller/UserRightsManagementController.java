@@ -30,12 +30,14 @@ public class UserRightsManagementController {
 	@RequestMapping("list")
 	public String list(HttpServletRequest request) {
 		List<Permission> allper = perService.getAllper();
-		 List<Role_Permission> allRole_PerById = role_PerService.getAllRole_PerById(4);
-		 List<Permission> operationById = perService.getOperationById(4);
-		 for (Permission permission : operationById) {
-			System.out.println("permission:"+permission);
-		}
-		 request.setAttribute("operationById", operationById);
+//		 List<Role_Permission> allRole_PerById = role_PerService.getAllRole_PerById(4);
+//		 List<Permission> operationById = perService.getOperationById(4);
+		 System.out.println("1231546");
+//		 for (Permission permission : operationById) {
+//			System.out.println("22permission:"+permission);
+//		}
+//		 request.setAttribute("operationBy", operationById);
+		 
 //		 for (Permission permission : allper) {
 //				for (Role_Permission role_Permission : allRole_PerById) {
 //					if (role_Permission.getPerId()==permission.getId()) {

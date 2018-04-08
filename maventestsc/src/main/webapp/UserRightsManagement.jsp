@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -128,24 +129,24 @@
 <div class="zTreeDemoBackground left" id="ztree">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
-	<c:forEach items="${operationById }" var="ope">
-	<c:if test="${ope.alias=='user_add' }">
-	<a href="#" class="btn btn-default " onclick="add();">添加</a>
-	</c:if>
-	<c:if test="${ope.alias=='user_update' }">
+	<shiro:hasPermission name="user_add">
+	<a href="#" class="btn btn-default " onclick="add();">添加</a> 
+	</shiro:hasPermission>
+	<shiro:hasPermission name="user_update">
 	<a href="#" class="btn btn-default " onclick="endt();">修改</a>
-	</c:if>
-	<c:if test="${ope.alias=='user_delete' }">
-	<a href="#" class="btn btn-default " onclick="dele();">删除</a>
-	</c:if>
-	</c:forEach>
-	
-	
-	
-	
-	
-	
-	
+	</shiro:hasPermission>
+	<shiro:hasPermission name="user_delete">
+	<a href="#" class="btn btn-default " onclick="dele();">删除</a> 
+	</shiro:hasPermission>
+<%-- 	<shiro:hasPermission name="user_add"> --%>
+<!-- 	<a href="#" class="btn btn-default " onclick="add();">添加</a> -->
+<%-- 	</shiro:hasPermission> --%>
+<%-- 	<shiro:hasPermission name="user_update"> --%>
+<!-- 	<a href="#" class="btn btn-default " onclick="endt();">修改</a> -->
+<%-- 	</shiro:hasPermission> --%>
+<%-- 	<shiro:hasPermission name="user_delete"> --%>
+<!-- 	<a href="#" class="btn btn-default " onclick="dele();">删除</a> -->
+<%-- 	</shiro:hasPermission> --%>
 	
 	
 	

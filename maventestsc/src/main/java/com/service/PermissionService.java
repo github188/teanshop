@@ -1,8 +1,10 @@
 package com.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.bean.Permission;
+import com.bean.User;
 
 public interface PermissionService {
 	
@@ -19,4 +21,8 @@ public interface PermissionService {
 	List<Permission>getOperationById(int id);
 
 	List<Permission> readChildnodesById(int id);
+	
+	Set<String>getAllPerByName(User user);
+	
+	Set<String>getOperation(int id);
 }

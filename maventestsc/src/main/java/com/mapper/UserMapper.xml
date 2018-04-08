@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.mapper.UserDao">
+<select id="getUSerById"  resultType="com.bean.User" parameterType="com.bean.User">
+select uid,uname,upassword from `user` where uname=#{uname}
+</select>
+<!-- Set<String> getUserByName(User user); -->
+<select id="getUserByName" resultType="com.bean.User" parameterType="com.bean.User">
+select * from `user` where uname=#{uname}
+</select>
+</mapper>

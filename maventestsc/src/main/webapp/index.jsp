@@ -27,15 +27,6 @@
 	<script src="/js/jquery-3.0.0.js" type="text/javascript" charset="utf-8" media="all"></script>
 	<script src="/common/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8" media="all"></script>
 </head>
-<script type="text/javascript">
-
-$.ajax({
-	type:"post",
-	url:"",
-	async:true
-});
-
-</script>
 <body>
 <div class="layui-layout layui-layout-admin" id="layui_layout">
 	<!-- 顶部区域 -->
@@ -87,7 +78,7 @@ $.ajax({
 						锁屏</a>
 					</li>
 					<li class="layui-nav-item">
-						<a href="login.html">
+						<a href="/shiro/logout">
                         <i class="iconfont icon-exit"></i>
 						退出</a>
 					</li>
@@ -106,24 +97,30 @@ $.ajax({
 				</a>
 			</li>
 			<!-- 个人信息 -->
-				<c:forEach  items="${td}" var="c">
+				<c:forEach  items="${operationById}" var="c">
+				<c:if test="${c.pId==0 }">
 			<li class="layui-nav-item">
 				<a href="javascript:;">
 					<i class="iconfont icon-jiaoseguanli" ></i>
 					<span>${c.name}</span>
 					<em class="layui-nav-more"></em>
 				</a>
-				 <c:forEach items="${c.did}" var="b" >
+				
+				 <c:forEach items="${operationById}" var="b" >
+				 <c:if test="${b.pId==c.id }">
 				<dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:;" data-url="${b.turl}">
+                        <a href="javascript:;" data-url="${b.url}">
                             <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
                             <span>${b.name}</span>
                         </a>
                     </dd>
                 </dl>
+                </c:if>
                   </c:forEach>
+                  
 			</li>
+			</c:if>
 			</c:forEach>
 		</ul>
 	    </div>

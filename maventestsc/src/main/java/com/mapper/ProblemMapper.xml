@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 	List<Problem>getAllProblem();
+	
+	Problem getProblemById(int pid); -->
+<mapper namespace="com.mapper.ProblemDao">
+
+<select id="getAllProblem" resultType="com.bean.Problem">
+select * from problem
+</select>
+
+<select id="getProblemById" resultType="com.bean.Problem">
+select * from problem where pid={pid}
+</select>
+
+</mapper>

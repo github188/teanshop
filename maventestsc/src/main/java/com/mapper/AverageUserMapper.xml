@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 	List<AverageUser> getAllAverageUser();
+	
+	AverageUser getAverageUserById(int uid);
+	
+	int save(AverageUser averageUser);
+	
+	void updateAverageUser(AverageUser averageUser);
+	
+	void deleteAverageUser(int uid); -->
+<mapper namespace="com.mapper.AverageUserDao">
+<resultMap type="com.bean.AverageUser" id="AverageUserMap">
+<id column="uid" property="uid"/>
+<result column="uname" property="uname"/>
+<result column="password" property="password"/>
+<result column="address" property="address"/>
+<result column="age" property="age"/>
+<result column="emal" property="emal"/>
+<result column="phone" property="phone"/>
+</resultMap>
+<select id="getAllAverageUser" resultMap="AverageUserMap">
+select * from averageUser
+</select>
+<select id="getAverageUserById" resultMap="AverageUserMap">
+select * from averageUser where uname=#{uname}
+</select>
+
+<insert id="save" parameterType="com.bean.AverageUser">
+  <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="productId">
+          SELECT LAST_INSERT_ID()
+  </selectKey>
+INSERT INTO averageuser VALUES(null,#{uname},#{phone},#{emal},#{sex},#{age},#{address},#{password},#{problemid.pid},#{answer})
+</insert>
+
+<update id="updateAverageUser" parameterType="com.bean.AverageUser">
+update averageuser set uname=#{uname} ,phone=#{phone},emal=#{emal},sex=#{sex},age=#{age},address=#{password} where uid=#{uid}
+</update>
+
+</mapper>

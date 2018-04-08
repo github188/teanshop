@@ -1,8 +1,10 @@
 package com.mapper;
 
 import java.util.List;
+import java.util.Set;
 
 import com.bean.Permission;
+import com.bean.User;
 
 public interface PermissionDao {
 	
@@ -19,5 +21,7 @@ public interface PermissionDao {
 	List<Permission>getOperationById(int id);
 	
 	List<Permission> readChildnodesById(int id);
+	
+	Set<Permission>getAllPerByName(User user);
 
 }

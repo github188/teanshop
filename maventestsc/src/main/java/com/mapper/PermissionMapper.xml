@@ -14,10 +14,11 @@ name=#{name},
  where id=#{id}
 </update>
 
-<!-- List<Permission>getOperationById(int id); -->
+<!-- List<Permission>getOperationById(int id); 
 <select id="getOperationById" resultType="com.bean.Permission">
 select * from permission p,role r,role_permission rp WHERE p.id=rp.perId and r.rid=rp.roleId  and pid=(select id from permission p WHERE p.name='权限管理') and r.rid=#{id}
 </select>
+-->
 <!-- int savePer(Permission per); -->
 <insert id="savePer" parameterType="com.bean.Permission" >
 
@@ -31,5 +32,9 @@ select * from permission where pid= #{id}
 <delete id="deletePerById">
 delete from permission where id=#{id}
 </delete>
+<select id="getOperationById" resultType="com.bean.Permission">
+SELECT * from permission WHERE id in(select perId from role_permission WHERE roleId=(select roleId from `user` WHERE uid=#{uid}))
+</select>
+<!-- Set<User>getAllPerByName(User user); -->
 
  </mapper>

@@ -1,6 +1,8 @@
 package com.service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +20,9 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public User getUSerById(int uid) {
+	public User getUSerById(User user) {
 		// TODO Auto-generated method stub
-		return userDao.getUSerById(uid);
+		return userDao.getUSerById(user);
 	}
 
 	@Override
@@ -39,6 +41,16 @@ public class UserServiceImp implements UserService {
 	public void deleteUserById(int pid) {
 		// TODO Auto-generated method stub
           userDao.deleteUserById(pid);
+	}
+
+	@Override
+	public Set<String> getUserByName(User user) {
+	       Set<User> userByName = userDao.getUserByName(user);
+	       Set<String> str=new HashSet<>();
+	       for (User user2 : userByName) {
+			str.add(user2.getUname());
+		}
+		return str;
 	}
 
 }

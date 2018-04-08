@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>LarryCMS后台登录</title>
@@ -12,11 +11,12 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">	
 	<meta name="format-detection" content="telephone=no">	
 	<!-- load css -->
-	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
-	<link rel="stylesheet" type="text/css" href="css/login.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/css/login.css" media="all">
+	<script type="text/javascript" src="/js/jquery-3.0.0.js"></script>
 </head>
 <body>
-	<form action="/login" method="post">
+<form action="/validation/login" method="post">
 <div class="layui-canvs"></div>
 <div class="layui-layout layui-layout-login">
 	<h1>
@@ -24,10 +24,10 @@
 		 <em>Management System</em>
 	</h1>
 	<div class="layui-user-icon larry-login">
-		 <input type="text" placeholder="账号" name="name" class="login_txtbx"/>
+		 <input type="text" placeholder="账号" name="uname" value="zhanghao" class="login_txtbx"/>
 	</div>
 	<div class="layui-pwd-icon larry-login">
-		 <input type="password" placeholder="密码" name="password" class="login_txtbx"/>
+		 <input type="password" placeholder="密码" name="upassword" value="zhanghao" class="login_txtbx"/>
 	</div>
     <div class="layui-val-icon larry-login">
     	<div class="layui-code-box">
@@ -36,7 +36,7 @@
     	</div>
     </div>
     <div class="layui-submit larry-login">
-    	<input type="submit" value="立即登陆" class="submit_btn"/>
+    	<input type="submit" value="立即登陆"  class="submit_btn"/>
     </div>
     <div class="layui-login-text">
     	<p>© 2016-2017 Larry 版权所有</p>
@@ -44,9 +44,9 @@
     </div>
 </div>
 </form>
-<script type="text/javascript" src="common/layui/lay/dest/layui.all.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
-<script type="text/javascript" src="jsplug/jparticle.jquery.js"></script>
+<script type="text/javascript" src="/common/layui/lay/dest/layui.all.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+<script type="text/javascript" src="/jsplug/jparticle.jquery.js"></script>
 <script type="text/javascript">
 $(function(){
 	$(".layui-canvs").jParticle({
@@ -54,9 +54,10 @@ $(function(){
 		color: "#E6E6E6"
 	});
 	//登录链接测试，使用时可删除
-	$(".submit_btn").click(function(){
-	  location.href="index.html";
-	});
+//	$("#submit_btn").click(function(){
+	//	alert(123456)
+	  //location.href="index.html";
+//	});
 });
 </script>
 </body>
